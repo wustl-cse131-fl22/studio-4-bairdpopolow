@@ -40,10 +40,12 @@ public class InterpretDrawingFile {
 			p2 = in.nextDouble();
 			p3 = in.nextDouble();
 			p4 = in.nextDouble();
+			if (in.hasNext()) {
 			p5 = in.nextDouble();
 			p6 = in.nextDouble();
+			}
 		}
-		StdDraw.setPenRadius(0.08);
+		StdDraw.setPenRadius(0.008);
 		if(shape.equals("ellipse")) {
 			StdDraw.setPenColor(r,g,b);
 			if(filled) {
@@ -65,18 +67,16 @@ public class InterpretDrawingFile {
 		}
 		
 		if(shape.equals("triangle")) {
-			double[] xc = {p1,p2,p3};
-			double[] yc = {p4,p5,p6};
+			double[] xc = {p1,p3,p5};
+			double[] yc = {p2,p4,p6};
 			StdDraw.setPenColor(r,g,b);
 			if(filled) {
 				StdDraw.filledPolygon(xc,yc);
 				
 			}
 			else {
-				StdDraw.line(p1, p4, p2, p5);
-				StdDraw.line(p1,p4,p3,p6);
-				StdDraw.line(p2,p5,p3,p6);
-			}
+				StdDraw.polygon(xc,yc);
+				}
 			
 		}
 		
